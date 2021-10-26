@@ -14,8 +14,8 @@
 
 <body>
     <script>
-        var IMP = window.IMP; // 생략가능
-        IMP.init('imp00454002'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        var IMP = window.IMP;
+        IMP.init('가맹점 식별코드');
         IMP.request_pay({
             pg : 'kakao',
             pay_method : 'card',
@@ -28,7 +28,6 @@
             buyer_addr : '서울특별시 강남구 삼성동',
             buyer_postcode : '123-456',
             m_redirect_url : 'https://www.yourdomain.com/payments/complete' 
-            // 모바일 결제시, 결제가 끝나고 랜딩되는 URL을 지정 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
         }, function(rsp) {
             if ( rsp.success ) {
 				let sendDate = {
