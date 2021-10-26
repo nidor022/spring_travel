@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+}
+a {
+	padding: 0;
+}
+p {
+	padding: 1px;
+	margin:3px;
+}
+div {
+	padding: 5px;
+	border: solid red 1px;
+}
+/* span { */
+/* 	border: solid green 1px; */
+/* } */
+table, th, td, tr {
+	border: solid 1px blue;
+	padding:5px;
+}
+#table1 {
+	width:800px;
+	padding:5px;
+	margin:20px;
+}
+#wrap {
+	width:1020px;
+	text-align:left;
+	margin:0;
+	margin-right: auto;
+	margin-left: auto;
+	min-height:780px;
+}
+.container2 {
+	display:grid;
+	grid-template-columns: 250px 250px 250px 250px;
+	grid-template-rows: 170px;
+}
+.notice2 {
+
+}
+.txt11 {
+	width:285px;
+	height:45px;
+	display:block;
+	overflow:hidden;
+}
+.txt12 {
+	width:285px;
+	height:150px;
+	display:block;
+	overflow:hidden;
+}
+.form {
+	margin:20px;
+	padding:10px;
+	width:900px;
+	height:200px;
+}
+.form_box {
+	width:100px;
+	padding:5px;
+}
+.row1 {
+	display: grid;
+	grid-template-columns: 500px 500px;
+	grid-template-rows: 500px 500px;
+}
+.row2 {
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+	grid-template-rows: 300px;
+}
+.row3 {
+	display: grid;
+	margin:50px 50px 10px 50px;
+	grid-template-columns: 300px 300px 300px;
+	grid-template-rows: 220px 220px 220px;
+}
+.row4 {
+	margin:50px;
+	padding:20px;
+}
+.float_right {
+	float: right;
+}
+.float_right2 {
+	float: right;
+	margin-right:50px;
+}
+.float_left {
+	float: left;
+}
+.clear {
+	height: 10px;
+	clear:both;
+}
+header {
+	height: 130px;
+	padding: 10px;
+	border: solid green 1px;
+}
+footer {
+	height: 100px;
+	padding: 10px;
+	border: solid green 1px;
+}
+body {
+	background: url(/images/back.jpg)repeat;
+}
+div {
+	background-color:white;
+}
+.search {
+	padding:10px;
+}
+.abc {
+	padding:10px;
+	font-size:30px;
+	text-transform: inherit;
+}
+#login {
+	float: right;
+}
+#logo {
+	float:left;
+}
+#top_menu {
+	margin: 30px 0 0 0;
+	float: right;
+}
+#top_menu ul {
+	list-style: none;
+	margin: 0;
+}
+#top_menu ul li {
+	float: left;
+	margin: 5px;
+}
+
+.txt {	
+	font-size:72px;
+	text-transform: inherit;
+	max-width: 800px;
+	font-weight: 600;
+	line-height: 1.22;
+	background-color: rgba(255, 0, 0, 0);
+}
+#a {
+	height: 600px;
+	padding: 30px 0 30px 0;
+	display: flex;
+    justify-content: left;
+    align-items: top;
+	position: relative;
+	background: url(/images/banner.jpg)no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.input_box {
+	height:30px;
+	width:250px;
+	padding:0 10px; 
+	border: 1px solid  #333 ; 
+	border-radius:3px;
+}
+
+#copy {
+	width:450px;
+	margin:10px;
+	float:left;	
+}
+#social {
+	width:130px;
+	margin:10px;
+	float:right;	
+}
+.center {
+	margin:10px;
+	float:left;
+}
+.btn {
+	margin:5px;
+	padding:5px;
+}
+.btn2 {
+	margin:5px;
+	padding:5px;
+	float:right;
+}
+.page {
+	float:right;
+	margin-right:350px;
+}

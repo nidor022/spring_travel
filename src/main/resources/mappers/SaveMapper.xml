@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SaveMapper">
+
+	<insert id="addSave"  parameterType="saveVo">
+		insert into travel_host_save (host_num, id, isSave)  
+		values(#{ hostNum }, #{ id }, #{ isSave }) 
+	</insert>
+	
+	<select id="getSaveInfo" resultType="saveVo">
+		select * from travel_host_save where id = #{ id }
+	</select>
+	
+	<select id="isExistSaveInfo" resultType="int">
+		select count(*) from travel_host_save where host_num = #{ hostNum } and id = #{ id }
+	</select>
+	
+	<select id="getSaveNum" resultType="int">
+		select num from travel_host_save where host_num = #{ hostNum } and id = #{ id }
+	</select>
+	
+	<select id="countSaveById" resultType="int">
+		select count(*) from travel_host_save where id = #{ id }
+	</select>
+	
+	<update id="updateSaveInfo">
+		update travel_host_save 
+			set isSave = #{isSave}
+			where host_num = #{ hostNum } and id = #{ id }
+	</update>
+	
+	<delete id="deleteSaveInfo">
+		delete from travel_host_save where num = #{ num }
+	</delete>
+	
+	<delete id="deleteSaveById">
+		delete from travel_host_save where id = #{ id }
+	</delete>
+	
+</mapper>

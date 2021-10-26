@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ReviewMapper">
+
+	<insert id="addReview">
+		insert into travel_review (num, id, comment, score, no_num, reg_date)  
+		values(#{ bookNum }, #{ id }, #{ comment }, #{ score }, #{ noNum }, now()) 
+	</insert>
+	
+	<select id="getReviewInfo" resultType="reviewVo">
+		select * from travel_review where num = #{ num }
+	</select>
+	
+	<select id="getReviewsByNoNumFour" resultType="reviewVo">
+		select * from travel_review
+			where no_num = #{ noNum } order by num desc limit 0, 4
+	</select>	
+	
+	<select id="getReviewsByNoNum" resultType="reviewVo">
+		select * from travel_review where no_num = #{ noNum } order by num desc
+	</select>
+	
+	<select id="getReviewsById" resultType="reviewVo">
+		select * from travel_review where id = #{ id } order by reg_date desc limit #{startRow}, 5
+	</select>
+	
+	<select id="getReviews" resultType="reviewVo">
+		select * from travel_review order by num desc limit 0, 3
+	</select>
+	
+	<select id="getAvgScoreByNoNum" resultType="string">
+		select avg(score) from travel_review where no_num = #{ noNum }
+	</select>
+	
+	<select id="countReviewByNoNum" resultType="int">
+		select count(*) from travel_review where no_num = #{ noNum }
+	</select>
+	
+	<select id="countReviewById" resultType="int">
+		select count(*) from travel_review where id = #{ id }
+	</select>
+	
+	<update id="updateReviewInfo">
+		update travel_review 
+			set comment = #{ comment },
+			score = #{ score }
+			where num = #{ num }
+	</update>
+	
+	<delete id="deleteReviewInfo">
+		delete from travel_review where num = #{ num }
+	</delete>
+</mapper>

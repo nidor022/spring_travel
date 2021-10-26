@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.EmailMapper">
+
+	<insert id="addNumber">
+		INSERT INTO travel_email (email, number) 
+		VALUES (#{email}, #{number}) 
+	</insert>
+
+	<select id="getNumberByEmail" resultType="string">
+		SELECT number FROM travel_email WHERE email = #{email}
+	</select>
+
+	<delete id="deleteByEmail">
+		DELETE FROM travel_email WHERE email = #{email}
+	</delete>
+
+	<select id="getIdByEmail" resultType="string">
+		SELECT id FROM travel_user WHERE email = #{email}
+	</select>
+	
+	<select id="getPassByInfo" resultType="string">
+		SELECT password FROM travel_user WHERE id = #{id} AND email = #{email} 
+	</select>
+
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ImagesMapper">
+
+	<insert id="addImage">
+		insert into travel_host_image (uuid, filename, uploadpath, noNum)  
+		values(#{uuid}, #{filename}, #{uploadpath}, #{noNum}) 
+	</insert>
+	
+	<select id="getImageByNum" resultType="imagesVo">
+		select * from travel_host_image where num = #{num}
+	</select>
+	
+	<select id="getImageByNoNum" resultType="imagesVo">
+		select * from travel_host_image where noNum = #{noNum} group by noNum
+	</select>
+	
+	<select id="getImagesByNoNum" resultType="imagesVo">
+		select * from travel_host_image where nonum = #{num} 
+	</select>
+	
+	<select id="getImagesById" resultType="imagesVo">
+		select * from travel_host_image where id = #{id} 
+	</select>
+	
+	<delete id="deleteImagesByNoNum">
+		delete from travel_host_image where noNum = #{num}
+	</delete>
+	
+	<delete id="deleteImagesByNums">
+		delete from travel_host_image
+		where num in 
+		<foreach collection="numList" item="num" open="(" separator="," close=")">
+			#{num}
+		</foreach>
+	</delete>
+
+</mapper>

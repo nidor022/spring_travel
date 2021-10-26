@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ServiceCenterMapper">
+
+	<insert id="addFaqContent">
+		insert into travel_custom_service_faq (id, subject, content, readcount, reg_date)  
+		values(#{id}, #{subject}, #{content}, #{readcount}, now()) 
+	</insert>
+	
+	<insert id="addQnaContent">
+		insert into travel_custom_service_qna (id, status, type, subject, content, re_ref, re_lev, reg_date)  
+		values(#{id}, #{status}, #{type}, #{subject}, #{content}, #{reRef}, #{reLev}, now()) 
+	</insert>
+	
+	<select id="getFaqContents" resultType="faqVo">
+		select * 
+		FROM travel_custom_service_faq 
+		ORDER BY num DESC 
+		LIMIT #{startRow}, 9
+	</select>
+	
+	<select id="getQnaContents" resultType="qnaVo">
+		select * 
+		FROM travel_custom_service_qna 
+		where re_lev = 0
+		ORDER BY num DESC 
+		LIMIT #{startRow}, 10
+	</select>
+	
+	<select id="getFaqCountAll" resultType="int">
+		select COUNT(*) FROM travel_custom_service_faq
+	</select>
+	
+	<select id="getQnaCountAll" resultType="int">
+		select COUNT(*) FROM travel_custom_service_qna where re_lev = 0
+	</select>
+	
+	<select id="getFaqContentByNum" resultType="faqVo">
+		select * from travel_custom_service_faq where num = #{ num }
+	</select>
+	
+	<select id="getQnaContentByNum" resultType="qnaVo">
+		select * from travel_custom_service_qna where num = #{ num }
+	</select>
+	
+	<select id="getQnaContentByRef" resultType="qnaVo">
+		select * from travel_custom_service_qna where re_ref = #{ num }
+	</select>
+	
+	<update id="updateFaqReadcount">
+		update travel_custom_service_faq 
+			set readcount = readcount + 1
+			where num = #{ num }
+	</update>
+	
+	<update id="updateFaqContent">
+		update travel_custom_service_faq 
+			set id = #{id},
+			subject = #{subject},
+			content = #{content},
+			readcount = #{readcount}
+			where num = #{num}
+	</update>
+	
+	<update id="updateQnaContent">
+		update travel_custom_service_qna
+			set id = #{id},
+			status = #{status},
+			type = #{type},
+			subject = #{subject},
+			content = #{content}
+			where num = #{num}
+	</update>
+	
+	<delete id="deleteFaqContent">
+		delete from travel_custom_service_faq where num = #{num}
+	</delete>
+	
+	<delete id="deleteQnaContent">
+		delete from travel_custom_service_qna where num = #{num}
+	</delete>
+</mapper>

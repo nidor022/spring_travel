@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.HostMapper">
+
+	<insert id="addContent">
+		insert into travel_host (id, classification, houseType, stayType, countOfPerson, countOfBedroom, countOfBed,
+			countOfSofeBed, countOfSofe, countOfBlanket, countOfBathroom, postcode, address1, address2, amenities, 
+			safety, usefull, hostComment, cost, title, reg_date)  
+		values(#{id}, #{classification}, #{houseType}, #{stayType}, #{countOfPerson}, #{countOfBedroom}, #{countOfBed},
+			#{countOfSofeBed}, #{countOfSofe}, #{countOfBlanket}, #{countOfBathroom}, #{postcode}, #{address1}, #{address2} ,#{amenities},
+			#{safety}, #{usefull}, #{hostComment}, #{cost} , #{title}, now()) 
+	</insert>
+	
+	<select id="getContentInfo" resultType="hostVo">
+		select * from travel_host where num = #{num}
+	</select>
+	
+	<select id="getContentInfoForMain" resultType="hostVo">
+		select * from travel_host where classification = #{classification} order by reg_date desc  limit 1
+	</select>
+	
+	<select id="getContentCount" resultType="int">
+		select count(*) from travel_host where address1 like concat(#{location}, '%') and countofperson >= #{ cntOfPerson }
+	</select>
+	
+	<select id="getContentsByAddress" resultType="hostVo">
+		select * from travel_host where address1 like concat(#{location}, '%') and countofperson >= #{ cntOfPerson } order by reg_date desc limit #{startRow}, 5
+	</select>
+	
+	<select id="getContentAllById" resultType="hostVo">
+		select * from travel_host where id = #{ id }
+	</select>
+	
+	<select id="getContentsById" resultType="hostVo">
+		select * from travel_host where id = #{ id } order by reg_date desc limit #{startRow}, 5
+	</select>
+	
+	<select id="countContentsById" resultType="int">
+		select count(*) from travel_host where id = #{ id }
+	</select>
+	
+	<update id="updateContentInfo">
+		update travel_host 
+			set classification = #{classification},
+			housetype = #{houseType},
+			staytype = #{stayType},
+			countOfPerson = #{countOfPerson},
+			countOfBedroom = #{countOfBedroom},
+			countOfBed = #{countOfBed},
+			countOfSofeBed = #{countOfSofeBed},
+			countOfSofe = #{countOfSofe},
+			countOfBlanket = #{countOfBlanket},
+			countOfBathroom = #{countOfBathroom},
+			postcode = #{postcode},
+			address1 = #{address1},
+			address2 = #{address2},
+			amenities = #{amenities},
+			safety = #{safety},
+			usefull = #{usefull},
+			hostComment = #{hostComment},
+			cost = #{cost},
+			title = #{title}
+			where num = #{num}
+	</update>
+	
+	<delete id="deleteContentInfo">
+		delete from travel_host where num = #{num} 
+	</delete>
+	
+	<delete id="deleteContentById">
+		delete from travel_host where id = #{id}
+	</delete>
+</mapper>
