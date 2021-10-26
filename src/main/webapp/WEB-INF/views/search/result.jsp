@@ -230,7 +230,7 @@ hr {
 
 
 <!-- <script type="text/javascript" -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b762dcb0df5ac2cfd025bf54cb30dc11&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=카카오APP키&libraries=services"></script>
 
 <script>
 
