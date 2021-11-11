@@ -27,19 +27,19 @@ public class HomeController {
 	public String main(Model model) {
 		Map<String, Object> obj = locationService.getLocationListAndMainInfo();
 
-		List<LocationVo> locationList = (List<LocationVo>) obj.get("locationList");
+		List<LocationVo> locationList = (List<LocationVo>) obj.get("locationList"); // 가변 List
 		List<ReviewVo> reviewList = (List<ReviewVo>) obj.get("reviewList");
 		List<HostVo> hostList = (List<HostVo>) obj.get("hostList");
 
-		ArrayList<String> strLocationList = new ArrayList();
+		ArrayList<String> strLocationList = new ArrayList(); // 크기고정 ArrayList
 		for (LocationVo locationVo : locationList) {
 			strLocationList.add(locationVo.getLocation());
 		}
 
-		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("reviewList", reviewList); // view로 넘어갈 key, value
 		model.addAttribute("locationList", strLocationList);
 		model.addAttribute("hostList", hostList);
 		
-		return "index";
+		return "index"; // index.jsp
 	}
 }

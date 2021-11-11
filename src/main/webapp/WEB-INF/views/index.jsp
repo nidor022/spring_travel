@@ -256,27 +256,27 @@ hr {
 </div>
 
 <script>
-	let strLocationList = '${ locationList }';
-	let str = strLocationList.substring(1, strLocationList.length-1);
-	str = str.replace(/ /g,"")
-	let locationList = str.split(',');
+	let strLocationList = '${ locationList }'; // 현재 [a, b, c] 이런상태
+	let str = strLocationList.substring(1, strLocationList.length-1); // 중괄호 지우기
+	str = str.replace(/ /g,"") // 공백제거 정규식
+	let locationList = str.split(','); // 콤마 지우기
 
-	for (var key in locationList) { 
+	for (var key in locationList) { // for...in은 index값이 출력됨. for...of 라면 배열 내용물이 출력됐을꺼고 
 		let option = $('<option value="' +locationList[key] + '">' + locationList[key] + '</option>');
-		$('#location').append(option);
+		$('#location').append(option); // 이건 보나마나 id=location 태그 쪽에 옵션 추가하기
 	}
 
 	var rangeDate = 31; // set limit day
 	var setSdate, setEdate;
-	$("#checkin").datepicker({
+	$("#checkin").datepicker({ // JQuery UI datepicker
 		dateFormat : 'yy-mm-dd',
-		minDate : 0,
+		minDate : 0, // 선택할수있는 최소날짜
 		onSelect : function(selectDate) {
 			var stxt = selectDate.split("-");
-			stxt[1] = stxt[1] - 1;
+			stxt[1] = stxt[1] - 1; // -1을 안하면 한달이 더 추가가 됨
 			var sdate = new Date(stxt[0], stxt[1], stxt[2]);
 			var edate = new Date(stxt[0], stxt[1], stxt[2]);
-			edate.setDate(sdate.getDate() + rangeDate);
+			edate.setDate(sdate.getDate() + rangeDate); // sdate stxt[2]값에 31더하기
 
 			$('#checkout').datepicker('option', {
 				minDate : selectDate,
@@ -298,7 +298,8 @@ hr {
 			console.log(setEdate)
 		}
 	});
-	$('.searchBtn').on('click', function(e) {
+	
+	$('.searchBtn').on('click', function(e) { // 작동안함
 		if ($('input#checkin').val() == '') {
 			alert('시작일을 선택해주세요.');
 			$('input#checkin').focus();

@@ -11,7 +11,8 @@ import com.example.interceptor.UserStayLoggedInInterceptor;
 
 @Configuration
 public class MyWebMvcConfig implements WebMvcConfigurer {
-	
+
+	// interceptor는 중간에서 호출을 가로채는 역할. 뷰에서 컨트롤러로 데이터가 넘어오기전에 가로채는듯
 	@Autowired
 	private  UserLoginCheckInterceptor userLoginCheckInterceptor;
 	
