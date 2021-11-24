@@ -27,7 +27,8 @@ public class SearchController {
 	
 	@GetMapping("/result")
 	public String result(
-			@RequestParam(defaultValue = "1") int pageNum,
+			// 기본데이터타입인 int의 경우 요청파라미터가 존재하지 않을때 null을 반환하기때문에 defaultValue를 지정해주어야 함
+			@RequestParam(defaultValue = "1") int pageNum,  
 			@ModelAttribute("address") String address,
 			@ModelAttribute("checkIn") String checkIn, 
 			@ModelAttribute("checkOut") String checkOut,

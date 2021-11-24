@@ -263,8 +263,8 @@ hr {
 			listNum.push("${ search.num }");
 			imageList.push('/upload/${ search.imageVo.uploadpath }/${ search.imageVo.uuid }_${ search.imageVo.filename }');
 			titleList.push('${ search.title }');
-			costList.push(${ search.cost });
-			console.log('num : ' + ${ search.num });
+			costList.push('${ search.cost }');
+			console.log('num : ' + '${ search.num }');
 		</c:forEach>
 		console.log('list : ' + list);
 
